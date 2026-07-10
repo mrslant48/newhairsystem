@@ -1,0 +1,16 @@
+/* NHS photo gallery — thumbnail grid + lightbox */
+.nhs-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:15px 0}
+.nhs-gallery .nhs-thumb{display:block;position:relative;overflow:hidden;border-radius:6px;background:#eee;aspect-ratio:3/4;cursor:zoom-in}
+.nhs-gallery .nhs-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .25s ease}
+.nhs-gallery .nhs-thumb:hover img{transform:scale(1.06)}
+@media (max-width:500px){.nhs-gallery{grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:7px}}
+.nhs-lightbox{position:fixed;inset:0;z-index:99999;background:rgba(10,10,10,.94);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s ease}
+.nhs-lightbox.open{opacity:1;pointer-events:auto}
+.nhs-lightbox img{max-width:92vw;max-height:84vh;object-fit:contain;border-radius:4px;box-shadow:0 10px 40px rgba(0,0,0,.6);user-select:none;-webkit-user-drag:none}
+.nhs-lightbox button{position:absolute;border:0;background:rgba(255,255,255,.12);color:#fff;cursor:pointer;border-radius:50%;width:52px;height:52px;font-size:26px;line-height:1;display:flex;align-items:center;justify-content:center;transition:background .15s}
+.nhs-lightbox button:hover{background:rgba(255,255,255,.3)}
+.nhs-lb-close{top:14px;right:14px}
+.nhs-lb-prev{left:10px;top:50%;transform:translateY(-50%)}
+.nhs-lb-next{right:10px;top:50%;transform:translateY(-50%)}
+.nhs-lb-count{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);color:#fff;font:14px/1.4 sans-serif;background:rgba(0,0,0,.45);padding:4px 14px;border-radius:14px;letter-spacing:1px}
+@media (max-width:600px){.nhs-lightbox button{width:44px;height:44px;font-size:22px}.nhs-lb-prev{left:4px}.nhs-lb-next{right:4px}}
